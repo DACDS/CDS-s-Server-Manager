@@ -22,6 +22,7 @@ FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
 #DEBUG
 file1 = os.open("/usr/src/app/data/token.json",os.O_RDONLY)
 token = os.read(file1,100)
+token = token.decode("utf-8")
 os.close(file1)
 async def token_debug():
     async with discord.Client(intents=discord.Intents.default()):
