@@ -6,7 +6,7 @@ import os
 def FILE_SETUP(path,purpose):#Checks if file (path) exists if not creates it and writes (purpose) inside it
     isExist = os.path.isfile(path)
     if isExist == False:
-        file1 = open(path, w)
+        file1 = open(path, "w")
         file1.write(purpose)
         file1.close()
 
