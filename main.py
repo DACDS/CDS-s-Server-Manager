@@ -48,3 +48,4 @@ async def token_debug():
             print(f"Discord request failed: {exc}")
             sys.exit(1)
 asyncio.run(token_debug())
+print("Discord login sucess")
