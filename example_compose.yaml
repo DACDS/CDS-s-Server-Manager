@@ -1,0 +1,7 @@
+services:
+  app:
+    image: ghcr.io/dacds/cds-s-server-manager:latest
+    restart: unless-stopped
+    
+    volumes:
+      - ./data:/app/data
