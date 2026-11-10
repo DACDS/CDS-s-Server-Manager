@@ -3,6 +3,7 @@ import os
 
 
 #FILE_SETUP
+os.makedirs("/usr/src/app/data/server", exist_ok=True) #Makes server directory
 def FILE_SETUP(path,purpose):#Checks if file (path) exists if not creates it and writes (purpose) inside it
     isExist = os.path.isfile(path)
     if isExist == False:
