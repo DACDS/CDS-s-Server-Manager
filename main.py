@@ -11,4 +11,7 @@ def FILE_SETUP(path,purpose):#Checks if file (path) exists if not creates it and
         file1.write(purpose)
         file1.close()
 
-FILE_SETUP("/usr/src/app/data/token.json","Insert discord token file here")
+FILE_SETUP("/usr/src/app/data/token.json","Insert discord token here")
+FILE_SETUP("/usr/src/app/data/api.json","Insert petrodacly api here")
+FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
+
