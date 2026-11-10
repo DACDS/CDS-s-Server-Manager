@@ -1,5 +1,7 @@
 #IMPORTS
 import os
+import discord.py
+
 
 
 #FILE_SETUP
