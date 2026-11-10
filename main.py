@@ -21,7 +21,7 @@ FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
 #DEBUG
 file1 = os.open("/usr/src/app/data/token.json",os.O_RDONLY)
 token = os.read(file1,100)
-file1.close()
+os.close(file1)
 with discord.Client(intents=discord.Intents.none()) as client:
     try:
         client.login(token)
