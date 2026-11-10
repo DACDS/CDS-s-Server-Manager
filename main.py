@@ -33,7 +33,6 @@ link = os.read(file1,100)
 link = link.decode("utf-8")
 os.close(file1)
 api = PterodactylClient(link, api)
-print(api)
 
 #DEBUG
 async def token_debug():
