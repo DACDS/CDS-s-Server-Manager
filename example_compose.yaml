@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/dacds/cds-s-server-manager:latest
+    image: ghcr.io/dacds/cds-s-server-manager:main
     restart: unless-stopped
     
     volumes:
