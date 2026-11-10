@@ -1,6 +1,6 @@
 #IMPORTS
 import os
-import discord.py
+import discord
 
 
 
