@@ -24,9 +24,9 @@ file1 = os.open("/usr/src/app/data/token.json",os.O_RDONLY)
 token = os.read(file1,100)
 os.close(file1)
 async def token_debug():
-    async with client:
+    async with discord.Client(intents=discord.Intents.default()):
         try:
-            await client.login(token)
+            await discord.Client(intents=discord.Intents.default()).login(token)
         except discord.LoginFailure:
             print("Invalid bot token.")
             sys.exit(1)
