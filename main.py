@@ -33,5 +33,4 @@ async def token_debug():
         except discord.HTTPException as exc:
             print(f"Discord request failed: {exc}")
             sys.exit(1)
-asyncio.run(token_debug)
-
+asyncio.run(token_debug())
