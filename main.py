@@ -18,13 +18,25 @@ def FILE_SETUP(path,purpose):#Checks if file (path) exists if not creates it and
 
 FILE_SETUP("/usr/src/app/data/token.json","Insert discord token here")
 FILE_SETUP("/usr/src/app/data/api.json","Insert petrodacly api here")
+FILE_SETUP("/usr/src/app/data/link.json","Insert petrodacly link here")
 FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
 
-#DEBUG
+#FILE-GET
 file1 = os.open("/usr/src/app/data/token.json",os.O_RDONLY)
 token = os.read(file1,100)
 token = token.decode("utf-8")
 os.close(file1)
+file1 = os.open("/usr/src/app/data/api.json",os.O_RDONLY)
+api = os.read(file1,100)
+api = api.decode("utf-8")
+os.close(file1)
+file1 = os.open("/usr/src/app/data/link.json",os.O_RDONLY)
+link = os.read(file1,100)
+link = link.decode("utf-8")
+os.close(file1)
+print(token,api,link)
+
+#DEBUG
 async def token_debug():
     async with discord.Client(intents=discord.Intents.default()):
         try:
