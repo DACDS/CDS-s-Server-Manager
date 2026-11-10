@@ -38,14 +38,19 @@ print(token,api,link)
 
 #DEBUG
 async def token_debug():
-    async with discord.Client(intents=discord.Intents.default()):
+    async with discord.Client(intents=discord.Intents.default()) as client:
         try:
-            await discord.Client(intents=discord.Intents.default()).login(token)
+            await client.login(token)
+            print("Token is valid.")
         except discord.LoginFailure:
             print("Invalid bot token.")
             sys.exit(1)
         except discord.HTTPException as exc:
             print(f"Discord request failed: {exc}")
             sys.exit(1)
+        except Exception as exc:
+            print(f"Unknown Discord error: {type(exc).__name__}: {exc}")
+            sys.exit(1)
+            
 asyncio.run(token_debug())
 print("Discord login sucess")
