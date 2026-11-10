@@ -19,7 +19,7 @@ FILE_SETUP("/usr/src/app/data/api.json","Insert petrodacly api here")
 FILE_SETUP("/usr/src/app/data/link.json","Insert petrodacly link here")
 FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
 
-#FILE-GET
+#KEY-GET
 file1 = os.open("/usr/src/app/data/token.json",os.O_RDONLY)
 token = os.read(file1,100)
 token = token.decode("utf-8")
@@ -52,3 +52,6 @@ async def token_debug():
             
 asyncio.run(token_debug())
 print("Discord login sucess")
+try:
+    servers = api.client.servers.list_servers()
+#add errss here
