@@ -3,9 +3,7 @@ import os
 import discord
 import sys
 import asyncio
-import pydactyl
-
-
+from pydactyl import PterodactylClient
 
 #FILE_SETUP
 os.makedirs("/usr/src/app/data/server", exist_ok=True) #Makes server directory
@@ -34,7 +32,8 @@ file1 = os.open("/usr/src/app/data/link.json",os.O_RDONLY)
 link = os.read(file1,100)
 link = link.decode("utf-8")
 os.close(file1)
-print(token,api,link)
+api = PterodactylClient(link, api)
+print(api)
 
 #DEBUG
 async def token_debug():
