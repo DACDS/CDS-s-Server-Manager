@@ -40,18 +40,11 @@ async def token_debug():
         try:
             await client.login(token)
             print("Token is valid.")
-        except discord.LoginFailure:
-            print("Invalid bot token.")
-            sys.exit(1)
-        except discord.HTTPException as exc:
-            print(f"Discord request failed: {exc}")
-            sys.exit(1)
-        except Exception as exc:
-            print(f"Unknown Discord error: {type(exc).__name__}: {exc}")
-            sys.exit(1)
-            
+        except Exception as e:
+            print(e)
 asyncio.run(token_debug())
 print("Discord login sucess")
 try:
     servers = api.client.servers.list_servers()
-#add errss here
+except Exception as e:
+            print(e)
