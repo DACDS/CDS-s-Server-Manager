@@ -19,7 +19,7 @@ FILE_SETUP("/usr/src/app/data/api.json","Insert petrodacly api here")
 FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
 
 #DEBUG
-file1 = os.open("/usr/src/app/data/token.json")
+file1 = os.open("/usr/src/app/data/token.json","os.O_RDONLY")
 token = os.read(file1,100)
 file1.close()
 with discord.Client(intents=discord.Intents.none()) as client:
