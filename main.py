@@ -42,9 +42,11 @@ async def token_debug():
             print("Token is valid.")
         except Exception as e:
             print(e)
+            sys.exit()
 asyncio.run(token_debug())
 print("Discord login sucess")
 try:
     servers = api.client.servers.list_servers()
 except Exception as e:
             print(e)
+            sys.exit()
