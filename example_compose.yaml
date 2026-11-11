@@ -1,6 +1,8 @@
 services:
   app:
     image: ghcr.io/dacds/cds-s-server-manager:main
+    container_name: cds-s-server-manager
+    pull_policy: always
     restart: unless-stopped
     
     volumes:
