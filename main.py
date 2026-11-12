@@ -48,7 +48,7 @@ else:
     with open("/usr/src/app/data/config.json", "w", encoding="utf-8") as file:
         json.dump(deft_config, file, indent=4)
 #SETTINGS_GET
-with open("config.json", "r", encoding="utf-8") as file:
+with open("/usr/src/app/data/config.json", "r", encoding="utf-8") as file:
     jsondata = json.load(file)
 forcerun = (jsondata["force_run"])
 #DEBUG
