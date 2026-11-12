@@ -8,7 +8,7 @@ import asyncio
 from pydactyl import PterodactylClient
 import json
 
-#FILE_SETUP
+#FILE SETUP
 os.makedirs("/usr/src/app/data/server", exist_ok=True) #Makes server directory
 def FILE_SETUP(path,purpose):#Checks if file (path) exists if not creates it and writes (purpose) inside it
     isExist = os.path.isfile(path)
@@ -21,7 +21,7 @@ FILE_SETUP("/usr/src/app/data/token.txt","Insert discord token here")
 FILE_SETUP("/usr/src/app/data/api.txt","Insert petrodacly api here")
 FILE_SETUP("/usr/src/app/data/link.txt","Insert petrodacly link here")
 
-#KEY-GET
+#KEY GET
 file1 = os.open("/usr/src/app/data/token.txt",os.O_RDONLY)
 token = os.read(file1,100)
 token = token.decode("utf-8").strip()
@@ -36,7 +36,7 @@ link = link.decode("utf-8")
 os.close(file1)
 api = PterodactylClient(link, api)
 
-#SETTINGS_MAKE
+#SETTINGS MAKE
 if os.path.isfile("/usr/src/app/data/config.json"):
     pass
 else:
@@ -47,7 +47,7 @@ else:
     }
     with open("/usr/src/app/data/config.json", "w", encoding="utf-8") as file:
         json.dump(deft_config, file, indent=4)
-#SETTINGS_GET
+#SETTINGS GET
 with open("/usr/src/app/data/config.json", "r", encoding="utf-8") as file:
     jsondata = json.load(file)
 forcerun: bool = (jsondata["force_run"])
@@ -88,14 +88,9 @@ class MyClient(discord.Client):
 bot = MyClient()
 
 #COMMAND SETUP
-# COMMAND SETUP
 @bot.tree.command(name="ping", description="Check whether the bot is online.")
 async def ping(interaction: discord.Interaction):
-    print(
-        f"Bot pinged from server: {interaction.guild} "
-        f"(ID: {interaction.guild_id})"
-    )
-
+    print("Bot pinged from server: ",{interaction.guild})
     await interaction.response.send_message("Pong!", ephemeral=True)
 #BOT START
 bot.run(token)
