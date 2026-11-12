@@ -36,19 +36,23 @@ link = link.decode("utf-8")
 os.close(file1)
 api = PterodactylClient(link, api)
 
-#SETTINGS
+#SETTINGS_MAKE
 if os.path.isfile("/usr/src/app/data/config.json"):
     pass
 else:
     print("No prexisting config file found attemping to create")
     deft_config = {
-        "README": "config file (delete to reset)"
+        "README": "config file (delete this file reset)",
+        "force_run": (False)
     }
     with open("/usr/src/app/data/config.json", "w", encoding="utf-8") as file:
         json.dump(deft_config, file, indent=4)
-
+#SETTINGS_GET
+with open("config.json", "r", encoding="utf-8") as file:
+    jsondata = json.load(file)
+forcerun = (jsondata["force_run"])
 #DEBUG
-if debugover == False:
+if forcerun == False:
     async def token_debug():
         async with discord.Client(intents=discord.Intents.default()) as client:
             try:
@@ -61,9 +65,12 @@ if debugover == False:
     print("Discord login sucess")
     try:
         servers = api.client.servers.list_servers()
+        print("Petro login sucess")
     except Exception as e:
                 print(e)
                 sys.exit()
+else:
+    print("Force run enabled, skiping debug step")
 #COMMAND SETUP
 # class MyClient(discord.Client):
 #     def __init__(self):
