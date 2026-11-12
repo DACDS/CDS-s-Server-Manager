@@ -44,8 +44,8 @@ else:
     deft_config = {
         "README": "config file (delete to reset)"
     }
-    with open("config.json", "w", encoding="utf-8") as file:
-        json.dump(data, file, indent=4)
+    with open("usr/src/app/data/config.json", "w", encoding="utf-8") as file:
+        json.dump(deft_config, file, indent=4)
 
 #DEBUG
 if debugover == False:
