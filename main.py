@@ -37,7 +37,7 @@ os.close(file1)
 api = PterodactylClient(link, api)
 
 #SETTINGS
-if os.path.isfile("config.json"):
+if os.path.isfile("usr/src/app/data/config.json"):
     pass
 else:
     print("No prexisting config file found attemping to create")
