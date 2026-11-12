@@ -38,7 +38,7 @@ api = PterodactylClient(link, api)
 
 #SETTINGS
 if os.path.isfile("config.json"):
-    return
+    pass
 else:
     print("No prexisting config file found attemping to create")
     deft_config = {
