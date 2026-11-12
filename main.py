@@ -85,7 +85,7 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print(f"Logged in as {self.user}")
         print(f"Connected to {len(self.guilds)} servers.")
-bot = MyClient
+bot = MyClient()
 
 #COMMAND SETUP
 @bot.tree.command(name="ping", description="Check whether the bot is online.")
