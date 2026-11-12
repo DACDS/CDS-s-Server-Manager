@@ -88,9 +88,14 @@ class MyClient(discord.Client):
 bot = MyClient()
 
 #COMMAND SETUP
+# COMMAND SETUP
 @bot.tree.command(name="ping", description="Check whether the bot is online.")
 async def ping(interaction: discord.Interaction):
-    print("Bot pinged from ", {interaction.guild})
+    print(
+        f"Bot pinged from server: {interaction.guild} "
+        f"(ID: {interaction.guild_id})"
+    )
 
+    await interaction.response.send_message("Pong!", ephemeral=True)
 #BOT START
 bot.run(token.strip())
