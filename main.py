@@ -24,7 +24,7 @@ FILE_SETUP("/usr/src/app/data/link.txt","Insert petrodacly link here")
 #KEY-GET
 file1 = os.open("/usr/src/app/data/token.txt",os.O_RDONLY)
 token = os.read(file1,100)
-token = token.decode("utf-8")
+token = token.decode("utf-8").strip()
 os.close(file1)
 file1 = os.open("/usr/src/app/data/api.txt",os.O_RDONLY)
 api = os.read(file1,100)
@@ -98,4 +98,4 @@ async def ping(interaction: discord.Interaction):
 
     await interaction.response.send_message("Pong!", ephemeral=True)
 #BOT START
-bot.run(token.strip())
+bot.run(token)
