@@ -50,7 +50,7 @@ else:
 #SETTINGS_GET
 with open("/usr/src/app/data/config.json", "r", encoding="utf-8") as file:
     jsondata = json.load(file)
-forcerun = (jsondata["force_run"])
+forcerun: bool = (jsondata["force_run"])
 #DEBUG
 if forcerun == False:
     async def token_debug():
