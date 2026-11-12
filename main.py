@@ -93,4 +93,4 @@ async def ping(interaction: discord.Interaction):
     print("Bot pinged from ", {interaction.guild})
 
 #BOT START
-bot.run(os.environ[token])
+bot.run(token.strip())
