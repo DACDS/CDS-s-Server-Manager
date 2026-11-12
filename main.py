@@ -1,9 +1,12 @@
 #IMPORTS
+import re
 import os
 import discord
+from discord import app_commands
 import sys
 import asyncio
 from pydactyl import PterodactylClient
+import json
 
 #FILE_SETUP
 os.makedirs("/usr/src/app/data/server", exist_ok=True) #Makes server directory
@@ -14,39 +17,55 @@ def FILE_SETUP(path,purpose):#Checks if file (path) exists if not creates it and
         file1.write(purpose)
         file1.close()
 
-FILE_SETUP("/usr/src/app/data/token.json","Insert discord token here")
-FILE_SETUP("/usr/src/app/data/api.json","Insert petrodacly api here")
-FILE_SETUP("/usr/src/app/data/link.json","Insert petrodacly link here")
-FILE_SETUP("/usr/src/app/data/settings.json","[Settings File]")
+FILE_SETUP("/usr/src/app/data/token.txt","Insert discord token here")
+FILE_SETUP("/usr/src/app/data/api.txt","Insert petrodacly api here")
+FILE_SETUP("/usr/src/app/data/link.txt","Insert petrodacly link here")
 
 #KEY-GET
-file1 = os.open("/usr/src/app/data/token.json",os.O_RDONLY)
+file1 = os.open("/usr/src/app/data/token.txt",os.O_RDONLY)
 token = os.read(file1,100)
 token = token.decode("utf-8")
 os.close(file1)
-file1 = os.open("/usr/src/app/data/api.json",os.O_RDONLY)
+file1 = os.open("/usr/src/app/data/api.txt",os.O_RDONLY)
 api = os.read(file1,100)
 api = api.decode("utf-8")
 os.close(file1)
-file1 = os.open("/usr/src/app/data/link.json",os.O_RDONLY)
+file1 = os.open("/usr/src/app/data/link.txt",os.O_RDONLY)
 link = os.read(file1,100)
 link = link.decode("utf-8")
 os.close(file1)
 api = PterodactylClient(link, api)
 
+#SETTINGS
+if os.path.isfile("config.json"):
+    return
+else:
+    print("No prexisting config file found attemping to create")
+    deft_config = {
+        "README": "config file (delete to reset)"
+    }
+    with open("config.json", "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4)
+
 #DEBUG
-async def token_debug():
-    async with discord.Client(intents=discord.Intents.default()) as client:
-        try:
-            await client.login(token)
-            print("Token is valid.")
-        except Exception as e:
-            print(e)
-            sys.exit()
-asyncio.run(token_debug())
-print("Discord login sucess")
-try:
-    servers = api.client.servers.list_servers()
-except Exception as e:
-            print(e)
-            sys.exit()
+if debugover == False:
+    async def token_debug():
+        async with discord.Client(intents=discord.Intents.default()) as client:
+            try:
+                await client.login(token)
+                print("Token is valid.")
+            except Exception as e:
+                print(e)
+                sys.exit()
+    asyncio.run(token_debug())
+    print("Discord login sucess")
+    try:
+        servers = api.client.servers.list_servers()
+    except Exception as e:
+                print(e)
+                sys.exit()
+#COMMAND SETUP
+# class MyClient(discord.Client):
+#     def __init__(self):
+#         super().__init__(intents=discord.Intents.default())
+#         self.tree = app_commands.CommandTree(self)
