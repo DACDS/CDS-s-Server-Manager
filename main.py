@@ -71,8 +71,26 @@ if forcerun == False:
                 sys.exit()
 else:
     print("Force run enabled, skiping debug step")
+
+#BOT SETUP
+class MyClient(discord.Client):
+    def __init__(self):
+        super().__init__(intents=discord.Intents.default())
+        self.tree = app_commands.CommandTree(self)
+    async def setup_hook(self):
+        # Global registration: do not loop through servers.
+        synced = await self.tree.sync()
+        print(f"Synced {len(synced)} global commands.")
+
+    async def on_ready(self):
+        print(f"Logged in as {self.user}")
+        print(f"Connected to {len(self.guilds)} servers.")
+bot = MyClient
+
 #COMMAND SETUP
-# class MyClient(discord.Client):
-#     def __init__(self):
-#         super().__init__(intents=discord.Intents.default())
-#         self.tree = app_commands.CommandTree(self)
+@bot.tree.command(name="ping", description="Check whether the bot is online.")
+async def ping(interaction: discord.Interaction):
+    print("Bot pinged from ", {interaction.guild})
+
+#BOT START
+bot.run(os.environ[token])
