@@ -37,14 +37,14 @@ os.close(file1)
 api = PterodactylClient(link, api)
 
 #SETTINGS
-if os.path.isfile("usr/src/app/data/config.json"):
+if os.path.isfile("/usr/src/app/data/config.json"):
     pass
 else:
     print("No prexisting config file found attemping to create")
     deft_config = {
         "README": "config file (delete to reset)"
     }
-    with open("usr/src/app/data/config.json", "w", encoding="utf-8") as file:
+    with open("/usr/src/app/data/config.json", "w", encoding="utf-8") as file:
         json.dump(deft_config, file, indent=4)
 
 #DEBUG
