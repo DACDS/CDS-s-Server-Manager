@@ -11,4 +11,5 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run app.py when the container launches
+ENV PYTHONUNBUFFERED=1
 CMD ["python", "./main.py"]
